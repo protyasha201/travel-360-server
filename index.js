@@ -5,12 +5,13 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID
+require('dotenv').config();
 
 app.use(bodyParser.json())
 app.use(cors());
 
 
-const uri = "mongodb+srv://travelMarvel360:superTravelNewYork201@cluster0.ywip5.mongodb.net/travel360?retryWrites=true&w=majority";
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.ywip5.mongodb.net/travel360?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
     const servicesCollection = client.db("travel360").collection("services");
