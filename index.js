@@ -18,6 +18,11 @@ client.connect(err => {
     const adminsCollection = client.db("travel360").collection("admins");
     const bookingsCollection = client.db("travel360").collection("bookings");
     const reviewsCollection = client.db("travel360").collection("reviews");
+    
+    
+    app.get('/', (req, res) => {
+        res.send('Hello World!')
+    })
 
     app.post('/addService', (req, res) => {
         const services = req.body;
@@ -117,9 +122,6 @@ client.connect(err => {
             })
     })
 
-    app.get('/', (req, res) => {
-        res.send('Hello World!')
-    })
     //   client.close();
 });
 
